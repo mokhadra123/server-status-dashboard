@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Light theme (default) */
+:root {
+  --color-primary: #1e40af;
+  --color-primary-light: #3b82f6;
+  --color-primary-dark: #1e3a8a;
+
+  --color-secondary: #7c3aed;
+
+  --color-background: #f8fafc;
+  --color-paper: #ffffff;
+
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+
+  --color-divider: rgba(15, 23, 42, 0.12);
+  --color-action-hover: rgba(15, 23, 42, 0.04);
+}
+
+/* Dark theme overrides */
+.dark {
+  --color-primary: #3b82f6;
+  --color-primary-light: #60a5fa;
+  --color-primary-dark: #1e40af;
+
+  --color-secondary: #a78bfa;
+
+  --color-background: #0a0a0a;
+  --color-paper: #171717;
+
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #94a3b8;
+
+  --color-success: #4ade80;
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
+
+  --color-divider: rgba(241, 245, 249, 0.12);
+  --color-action-hover: rgba(241, 245, 249, 0.08);
+}
+
+@theme inline {
+  --color-primary: var(--color-primary);
+  --color-primary-light: var(--color-primary-light);
+  --color-primary-dark: var(--color-primary-dark);
+
+  --color-secondary: var(--color-secondary);
+
+  --color-background: var(--color-background);
+  --color-paper: var(--color-paper);
+
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-error: var(--color-error);
+
+  --color-divider: var(--color-divider);
+  --color-action-hover: var(--color-action-hover);
+
+  --font-sans: var(--font-geist-sans), Arial, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+
+  --radius: 0.75rem;     
+  --radius-button: 0.625rem; 
+  --radius-card: 1rem;
+
+  --animate-grow-in: grow-in 300ms cubic-bezier(0.4, 0, 0.2, 1) both;
+  --animate-pulse-dot: pulse-dot 1.5s ease-in-out infinite;
+}
+
+@keyframes grow-in {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.4; }
+}
+
+@layer base {
+  body {
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+}
