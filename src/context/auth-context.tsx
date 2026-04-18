@@ -8,7 +8,7 @@ import {
   useMemo,
   useState,
 } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import { logout as logoutAction } from "@/app/(auth)/_lib/auth-services";
 import type { User } from "@/types";
@@ -27,6 +27,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
+  const pathname = usePathname();
 
   const refreshUser = useCallback(async () => {
     try {
@@ -40,8 +41,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
-    refreshUser();
-  }, [refreshUser]);
+    void refreshUser();
+  }, [pathname, refreshUser]);
 
   const logout = useCallback(async () => {
     await logoutAction();
