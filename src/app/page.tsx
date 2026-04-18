@@ -6,7 +6,7 @@ export default async function Home() {
   const session = store.get('session');
 
   if (session?.value) {
-    redirect('/dashboard');
+    redirect('/servers');
   }
 
   redirect('/login');

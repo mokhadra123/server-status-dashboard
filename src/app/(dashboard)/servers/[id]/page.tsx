@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Metadata } from "next";
 import { LuArrowLeft } from "react-icons/lu";
 
 import ServerDetailInfo from "../_components/server-detail-info";
@@ -7,6 +8,11 @@ import ServerDetailsChart from "../_components/server-details-chart";
 import ServerStatusTimeline from "../_components/server-status-timeline";
 
 import { mockServers, getServerWithJitter } from "@/lib/mock-data/servers-data";
+
+export const metadata: Metadata = {
+  title: "Server Details",
+  description: "Server details page",
+};
 
 export default async function ServerDetailPage({
   params,

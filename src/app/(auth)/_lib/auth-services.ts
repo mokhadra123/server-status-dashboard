@@ -8,7 +8,7 @@ import { mockUsers, type MockUser } from '@/lib/mock-data/users-data';
 import { LoginFormSchema, SignupFormSchema } from './auth-validations';
 import type { FormState } from './auth-validations';
 
-const SESSION_COOKIE = 'session';
+const SESSION_COOKIE = 'session'; 
 
 function setSession(user: MockUser) {
   const session = JSON.stringify({ id: user.id, name: user.name, email: user.email });
@@ -44,7 +44,7 @@ export async function login(
   }
 
   await setSession(user);
-  redirect('/dashboard');
+  redirect('/servers');
 }
 
 export async function signup(
@@ -77,7 +77,7 @@ export async function signup(
 
   mockUsers.push(newUser);
   await setSession(newUser);
-  redirect('/dashboard');
+  redirect('/servers');
 }
 
 export async function logout() {
